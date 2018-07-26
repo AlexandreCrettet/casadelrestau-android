@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 26
     defaultConfig {
         applicationId "com.cheerz.casadelrestau"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -19,12 +19,9 @@ android {
     }
 }
 
-repositories {
-    maven { url 'https://maven.google.com' }
-}
-
 dependencies {
-    def supportLibVersion = '27.1.1'
+    def supportLibVersion = '26.1.0'
+    def googleServicesVersion = '15.0.1'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -33,6 +30,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$supportLibVersion"
     implementation 'com.google.android.gms:play-services-maps:15.0.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation "com.google.android.gms:play-services-location:$googleServicesVersion"
 
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
