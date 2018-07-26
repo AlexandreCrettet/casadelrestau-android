@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity
 import com.cheerz.casadelrestau.login.signUp.SignUp
 import com.cheerz.casadelrestau.login.singIn.SignIn
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
+import com.cheerz.casadelrestau.places.PlaceMarkerAssets
 import com.cheerz.casadelrestau.places.Places
 import com.cheerz.casadelrestau.places.PlacesModel
 import com.cheerz.casadelrestau.places.PlacesPresenter
@@ -161,7 +162,8 @@ class MainActivity : AppCompatActivity(),
     override fun showPlaces(places: List<MiamzReqPlaceData>) {
         places.map { place ->
             val toLocation = LatLng(place.lat, place.lng)
-            mMap.addMarker(this, toLocation, place.name, R.drawable.ic_launcher_background, 100)
+            val assetRes = PlaceMarkerAssets.getAssetRes(place.place_category_tag) ?: return
+            mMap.addMarker(this, toLocation, place.name, assetRes, 100) //TODO size
         }
     }
 }
