@@ -14,17 +14,24 @@
         tools:context=".MainActivity" />
 
     <com.cheerz.casadelrestau.login.signUp.SignUpView
-        android:id="@+id/sign_in_view"
+        android:id="@+id/sign_up_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:visibility="invisible" />
 
     <com.cheerz.casadelrestau.login.singIn.SignInView
-        android:id="@+id/sign_up_view"
+        android:id="@+id/sign_in_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:visibility="invisible" />
+
+
+    <com.cheerz.casadelrestau.sideMenu.SideMenuView
+        android:id="@+id/left_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/right_menu"/>
 
 </FrameLayout>
