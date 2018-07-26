@@ -14,8 +14,8 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, Co
 
     init {
         RelativeLayout.inflate(context, R.layout.login_view, this)
-        sing_in.setOnClickListener { onSingIngClicked() }
-        sing_up.setOnClickListener { onSingUpClicked() }
+        sign_in.setOnClickListener { onSingIngClicked() }
+        sign_up.setOnClickListener { onSingUpClicked() }
     }
 
     override fun onSingIngClicked() {

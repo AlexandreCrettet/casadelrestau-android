@@ -40,7 +40,7 @@
         android:layout_marginBottom="150dp"
         android:layout_marginLeft="@dimen/login_field_margin"
         android:layout_marginRight="@dimen/login_field_margin"
-        android:hint="@string/sing_up_password_hint"
+        android:hint="@string/sing_in_password_hint"
         android:paddingBottom="@dimen/login_field_padding"
         android:paddingLeft="@dimen/login_field_padding"
         android:paddingRight="@dimen/login_field_padding"
