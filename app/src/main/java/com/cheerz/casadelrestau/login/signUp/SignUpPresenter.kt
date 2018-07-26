@@ -41,6 +41,6 @@ class SignUpPresenter(private val view: SignUp.View, private val listener: SignU
 
     private fun onSignedUp(signUp: MiamzSignUp) {
         UserStorage.storeUser(User(signUp.email, signUp.nickname))
-        //TODO: hide login flow and show map
+        listener.goToMapView()
     }
 }
