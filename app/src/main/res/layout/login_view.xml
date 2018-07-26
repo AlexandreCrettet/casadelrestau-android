@@ -24,10 +24,7 @@
         android:layout_marginLeft="@dimen/login_field_margin"
         android:layout_marginRight="@dimen/login_field_margin"
         android:hint="@string/sign_up_email_hint"
-        android:paddingBottom="@dimen/login_field_padding"
-        android:paddingLeft="@dimen/login_field_padding"
-        android:paddingRight="@dimen/login_field_padding"
-        android:paddingTop="@dimen/login_field_padding"
+        android:padding="@dimen/login_field_padding"
         app:layout_constraintBottom_toBottomOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -35,17 +32,15 @@
 
     <EditText
         android:id="@+id/password"
+        android:password="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:layout_marginLeft="@dimen/login_field_margin"
         android:layout_marginRight="@dimen/login_field_margin"
         android:hint="@string/sing_up_password_hint"
-        android:paddingBottom="@dimen/login_field_padding"
-        android:paddingLeft="@dimen/login_field_padding"
-        android:paddingRight="@dimen/login_field_padding"
-        android:paddingTop="@dimen/login_field_padding"
-        app:layout_constraintBottom_toBottomOf="@id/sign_up"
+        android:padding="@dimen/login_field_padding"
+        app:layout_constraintBottom_toTopOf="@id/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -53,12 +48,11 @@
         android:id="@+id/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="100dp"
         android:hint="@string/sign_up_sign_up_button"
-        app:layout_constraintBottom_toBottomOf="@id/sign_in"
+        app:layout_constraintBottom_toTopOf="@id/sign_in"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/sign_in"
