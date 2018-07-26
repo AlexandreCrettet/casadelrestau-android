@@ -36,7 +36,7 @@ class SignInPresenter(private val view: SignInView,
 
     private fun onLoggedIn(login: MiamzLogin) {
         UserStorage.storeUser(User(login.email, login.nickname))
-        //TODO: hide login flow and show map
+        listener.goToMapView()
     }
 
     override fun onSignUpClicked() {

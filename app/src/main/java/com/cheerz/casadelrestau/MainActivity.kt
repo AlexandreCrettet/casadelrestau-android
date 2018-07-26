@@ -10,30 +10,21 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import com.cheerz.casadelrestau.user.UserStorage
 import com.cheerz.casadelrestau.login.hide
 import com.cheerz.casadelrestau.login.show
 import com.cheerz.casadelrestau.login.signUp.SignUp
 import com.cheerz.casadelrestau.login.singIn.SignIn
+import com.cheerz.casadelrestau.user.UserStorage
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.sign_in_view
+import kotlinx.android.synthetic.main.activity_main.sign_up_view
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback, MainMvp.View, LocationListener, SignIn.Listener, SignUp.Listener {
-
-    override fun onSignInClicked() {
-        sign_up_view.show()
-        sign_in_view.hide()
-    }
-
-    override fun onSignUpClicked() {
-        sign_up_view.hide()
-        sign_in_view.show()
-    }
+class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, SignIn.Listener, SignUp.Listener {
 
     private lateinit var mMap: GoogleMap
     private val locationRefreshTimeMillis = 500L
@@ -89,7 +80,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, MainMvp.View, Loca
         }
     }
 
-    override fun showMap() {
+    private fun showMap() {
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
@@ -133,7 +124,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, MainMvp.View, Loca
     override fun onProviderDisabled(provider: String?) {
     }
 
-    override fun showLogin() {
-        TODO()
+    override fun onSignInClicked() {
+        sign_up_view.show()
+        sign_in_view.hide()
+    }
+
+    override fun onSignUpClicked() {
+        sign_up_view.hide()
+        sign_in_view.show()
+    }
+
+    override fun goToMapView() {
+        sign_in_view.hide()
+        sign_up_view.hide()
     }
 }

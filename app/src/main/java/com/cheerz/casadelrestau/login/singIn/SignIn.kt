@@ -21,5 +21,6 @@ interface SignIn {
 
     interface Listener {
         fun onSignUpClicked()
+        fun goToMapView()
     }
 }
