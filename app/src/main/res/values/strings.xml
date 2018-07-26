@@ -8,6 +8,6 @@
     <string name="sign_up_error_toast_message">Wrong data</string>
     <string name="sign_in_email_hint">email address or user name</string>
     <string name="sing_in_password_hint">password</string>
-    <string name="sign_in_sign_in_button">sign up</string>
+    <string name="sign_in_sign_in_button">sign in</string>
     <string name="sign_in_sign_up_button">sign up</string>
 </resources>

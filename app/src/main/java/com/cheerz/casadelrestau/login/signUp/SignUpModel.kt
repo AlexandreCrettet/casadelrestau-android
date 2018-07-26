@@ -7,7 +7,7 @@ import com.cheerz.casadelrestau.network.data.MiamzReqSignUp
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.Single
 
-class SignUpModel : Login.Model {
+class SignUpModel : SignUp.Model {
 
     override fun login(email: String, password: String): Single<MiamzLogin> {
         return HttpClient.service.login(MiamzReqLogin(email, password))
