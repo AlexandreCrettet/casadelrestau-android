@@ -1,6 +1,5 @@
 package com.cheerz.casadelrestau.login.signUp
 
-import android.content.Context
 import com.cheerz.casadelrestau.login.LoginDataChecker
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import com.cheerz.casadelrestau.user.User
@@ -24,7 +23,7 @@ class SignUpPresenter(private val view: SignUp.View, private val listener: SignU
         if (LoginDataChecker.checkData(email, password))
             disposables.add(signUp(email, password))
         else
-            if (!LoginDataChecker.isPasswordEnaugh(password))
+            if (!LoginDataChecker.isPasswordEnough(password))
                 view.passwordTooShort()
             view.signUpNotValid()
     }
