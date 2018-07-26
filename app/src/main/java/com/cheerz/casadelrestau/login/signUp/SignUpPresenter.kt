@@ -32,7 +32,7 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
 
     private fun onSignedUp(signUp: MiamzSignUp) {
         UserStorage.storeUser(User(signUp.email, signUp.nickname))
-        view.
+        //TODO: hide login flow
     }
 
     private fun areAllFieldFilled(email: String, password: String): Boolean {
