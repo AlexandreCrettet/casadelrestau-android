@@ -2,17 +2,14 @@ package com.cheerz.casadelrestau.sideMenu
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
-import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
-import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
-import com.cheerz.casadelrestau.sampleRestau
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.side_menu.view.*
-import java.util.Collections.list
+import kotlinx.android.synthetic.main.activity_main.view.left_menu
+import kotlinx.android.synthetic.main.side_menu.view.right_menu_cross
+import kotlinx.android.synthetic.main.side_menu.view.right_menu_text
 
 class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.View, ConstraintLayout(context, attrs) {
 
@@ -21,8 +18,6 @@ class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.Vie
 
     init {
         RelativeLayout.inflate(context, R.layout.side_menu, this)
-        val sample = sampleRestau.getSample()
-        val adapter = RestaurantListAdapter(sample, this.context)
         //  restaurantList.adapter = adapter
         //restaurantList.layoutManager = LinearLayoutManager(this.context)
         left_menu.setOnClickListener { onLeftSideMenuClicked() }
