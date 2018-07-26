@@ -1,6 +1,8 @@
 package com.cheerz.casadelrestau.network
 
 import com.cheerz.casadelrestau.network.data.MiamzLogin
+import com.cheerz.casadelrestau.network.data.MiamzReqLogin
+import com.cheerz.casadelrestau.network.data.MiamzReqSignUp
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.Single
 import retrofit2.http.POST
@@ -12,8 +14,8 @@ interface CasaDelRestauService {
     }
 
     @POST("login")
-    fun login(email: String, password: String): Single<MiamzLogin>
+    fun login(params: MiamzReqLogin): Single<MiamzLogin>
 
-    @POST("register")
-    fun signUp(email: String, password: String): Single<MiamzSignUp>
+    @POST("api/1/users")
+    fun signUp(params: MiamzReqSignUp): Single<MiamzSignUp>
 }

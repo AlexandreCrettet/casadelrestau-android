@@ -3,16 +3,16 @@ package com.cheerz.casadelrestau.login.signUp
 import android.content.Context
 import com.cheerz.casadelrestau.login.LoginDataChecker
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
+import com.cheerz.casadelrestau.user.User
+import com.cheerz.casadelrestau.user.UserStorage
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-class SignUpPresenter(private val view: SignUp.View, private val listener : SignUp.Listener  ) : SignUp.Presenter {
+class SignUpPresenter(private val view: SignUp.View, private val listener: SignUp.Listener) : SignUp.Presenter {
 
     private val model = SignUpModel()
     private val disposables = CompositeDisposable()
 
-    init {
-    }
 
     override fun onSignInClicked() {
         listener.onSignInClicked()
@@ -35,6 +35,7 @@ class SignUpPresenter(private val view: SignUp.View, private val listener : Sign
     }
 
     private fun onSignedUp(signUp: MiamzSignUp) {
-        TODO()
+        UserStorage.storeUser(User(signUp.email, signUp.nickname))
+        //TODO: hide login flow
     }
 }

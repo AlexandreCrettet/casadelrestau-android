@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import com.cheerz.casadelrestau.user.UserStorage
 import com.cheerz.casadelrestau.login.hide
 import com.cheerz.casadelrestau.login.show
 import com.cheerz.casadelrestau.login.signUp.SignUp
@@ -43,6 +44,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, MainMvp.View, Loca
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        UserStorage.initialize(this)
         showMap()
         fetchCurrentLocation()
     }
