@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(),
     private var mLocationManager: LocationManager? = null
     private var placesPresenter: Places.Presenter? = null
     private var lastLocation: LatLng? = null
-    private val distanceSeenMeters = 500 //TODO: it should depend on the zoom
+    private val distanceSeenMeters = 2000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,6 +109,7 @@ class MainActivity : AppCompatActivity(),
             mMap.isMyLocationEnabled = true
         }
         showLocation(czLocation)
+        mMap.setOnCameraIdleListener { onMapShown(mMap.cameraPosition.target) }
     }
 
     override fun onLocationChanged(location: Location?) {
@@ -155,8 +156,9 @@ class MainActivity : AppCompatActivity(),
         onMapShown()
     }
 
-    private fun onMapShown() {
-        placesPresenter?.onMapShown(lastLocation!!.latitude, lastLocation!!.longitude, distanceSeenMeters)
+    private fun onMapShown(location: LatLng? = null) {
+        val onLocation = location ?: lastLocation!!
+        placesPresenter?.onMapShown(onLocation.latitude, onLocation.longitude, distanceSeenMeters)
     }
 
     override fun showPlaces(places: List<MiamzReqPlaceData>) {
