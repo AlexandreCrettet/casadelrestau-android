@@ -27,7 +27,7 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, Co
     }
 
     override fun signUpNotValid() {
-        val text = "wrong Data"
+        val text = R.string.sign_up_error_toast_message
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(this.context, text, duration)
         toast.show()
