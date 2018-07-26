@@ -17,7 +17,8 @@
         android:id="@+id/sign_in_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"
+        android:visibility="invisible" />
 
     <com.cheerz.casadelrestau.login.singIn.SignInView
         android:id="@+id/sign_up_view"

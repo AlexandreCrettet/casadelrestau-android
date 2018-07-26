@@ -39,6 +39,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, 
         UserStorage.initialize(this)
         showMap()
         fetchCurrentLocation()
+        showLogin()
+    }
+
+    private fun showLogin() {
+        UserStorage.retrieveToken() ?: sign_up_view.show()
     }
 
     private fun fetchCurrentLocation() {
