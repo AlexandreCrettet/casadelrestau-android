@@ -6,7 +6,10 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.cheerz.casadelrestau.R
-import kotlinx.android.synthetic.main.login_view.view.*
+import kotlinx.android.synthetic.main.login_view.view.email
+import kotlinx.android.synthetic.main.login_view.view.password
+import kotlinx.android.synthetic.main.login_view.view.sign_in
+import kotlinx.android.synthetic.main.login_view.view.sign_up
 
 class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, ConstraintLayout(context, attrs) {
 

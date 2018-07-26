@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import com.cheerz.casadelrestau.user.UserStorage
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, MainMvp.View, Loca
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        UserStorage.initialize(this)
         showMap()
         fetchCurrentLocation()
     }

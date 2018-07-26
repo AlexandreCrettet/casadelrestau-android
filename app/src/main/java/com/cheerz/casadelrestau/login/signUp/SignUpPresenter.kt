@@ -1,6 +1,8 @@
 package com.cheerz.casadelrestau.login.signUp
 
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
+import com.cheerz.casadelrestau.user.User
+import com.cheerz.casadelrestau.user.UserStorage
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -29,7 +31,8 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
     }
 
     private fun onSignedUp(signUp: MiamzSignUp) {
-        TODO()
+        UserStorage.storeUser(User(signUp.email, signUp.nickname))
+        view.
     }
 
     private fun areAllFieldFilled(email: String, password: String): Boolean {
