@@ -32,4 +32,8 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, Co
         val toast = Toast.makeText(this.context, text, duration)
         toast.show()
     }
+
+    override fun showSignIn() {
+        TODO()
+    }
 }
