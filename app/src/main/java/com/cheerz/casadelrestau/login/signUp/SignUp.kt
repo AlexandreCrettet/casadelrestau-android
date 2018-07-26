@@ -7,8 +7,6 @@ import io.reactivex.Single
 interface SignUp {
 
     interface View {
-        fun onSingIngClicked()
-        fun onSingUpClicked()
         fun signUpNotValid()
     }
 

@@ -3,8 +3,6 @@ package com.cheerz.casadelrestau.login.singIn
 interface SignIn {
 
     interface View {
-        fun onSignUpClicked()
-        fun onSignInClicked()
         fun signInNotValid()
     }
 

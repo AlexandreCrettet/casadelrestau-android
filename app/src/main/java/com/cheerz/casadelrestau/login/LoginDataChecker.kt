@@ -1,6 +1,6 @@
 package com.cheerz.casadelrestau.login
 
-class LoginDataChecker() {
+object LoginDataChecker {
 
      fun areAllFieldFilled(email: String, password: String): Boolean {
         return email.isNotEmpty() && password.isNotEmpty()

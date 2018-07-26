@@ -23,11 +23,11 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, C
         sign_up.setOnClickListener { onSingUpClicked() }
     }
 
-    override fun onSingIngClicked() {
+    private fun onSingIngClicked() {
         presenter.onSignInClicked()
     }
 
-    override fun onSingUpClicked() {
+    private fun onSingUpClicked() {
         presenter.onSignUpClicked(email.text.toString(), password.text.toString())
     }
 

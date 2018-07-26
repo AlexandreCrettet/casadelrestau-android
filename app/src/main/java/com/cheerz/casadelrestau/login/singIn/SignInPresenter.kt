@@ -11,8 +11,7 @@ class SignInPresenter(private val view: SignInView, private val listener: SignIn
     private val disposables = CompositeDisposable()
 
     override fun onSignInClicked(email : String, password : String) {
-        val loginDataChecker = LoginDataChecker()
-        if (loginDataChecker.areAllFieldFilled(email, password) && loginDataChecker.isEmailValid(email))
+        if (LoginDataChecker.areAllFieldFilled(email, password) && LoginDataChecker.isEmailValid(email))
             TODO()
         else
             view.signInNotValid()

@@ -19,8 +19,7 @@ class SignUpPresenter(private val view: SignUp.View, private val listener: SignU
     }
 
     override fun onSignUpClicked(email: String, password: String) {
-        val loginDataChecker = LoginDataChecker()
-        if (loginDataChecker.areAllFieldFilled(email, password) && loginDataChecker.isEmailValid(email))
+        if (LoginDataChecker.areAllFieldFilled(email, password) && LoginDataChecker.isEmailValid(email))
             disposables.add(signUp(email, password))
         else
             view.signUpNotValid()
