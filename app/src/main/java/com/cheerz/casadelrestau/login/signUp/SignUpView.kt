@@ -19,11 +19,11 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, Co
     }
 
     override fun onSingIngClicked() {
-        presenter.onSignInCicked()
+        presenter.onSignInClicked()
     }
 
     override fun onSingUpClicked() {
-        presenter.onSignUpCicked(email.text.toString(), password.text.toString())
+        presenter.onSignUpClicked(email.text.toString(), password.text.toString())
     }
 
     override fun signUpNotValid() {

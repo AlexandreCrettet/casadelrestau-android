@@ -4,11 +4,11 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
 
     private val model = SignUpModel()
 
-    override fun onSignInCicked() {
+    override fun onSignInClicked() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onSignUpCicked(email: String, password: String) {
+    override fun onSignUpClicked(email: String, password: String) {
         if (isAllFieldFill(email, password) && isEmailValid(email))
             model.signUp(email, password)
         else

@@ -9,12 +9,13 @@ interface Login {
     }
 
     interface Presenter {
-        fun onSignInCicked()
-        fun onSignUpCicked(email: String, password: String)
+        fun onSignInClicked()
+        fun onSignUpClicked(email: String, password: String)
         fun isAllFieldFill(email: String, password: String): Boolean
     }
 
     interface Model {
         fun signUp(email: String, password: String)
+        fun login(email: String, password: String)
     }
 }
