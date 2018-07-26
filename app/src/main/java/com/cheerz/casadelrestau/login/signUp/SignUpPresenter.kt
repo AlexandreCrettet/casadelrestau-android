@@ -3,8 +3,10 @@ package com.cheerz.casadelrestau.login.signUp
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import com.cheerz.casadelrestau.user.User
 import com.cheerz.casadelrestau.user.UserStorage
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 
 class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
 
@@ -23,16 +25,19 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
     }
 
     private fun signUp(email: String, password: String): Disposable {
-        return model.signUp(email, password).subscribe({
-            onSignedUp(it)
-        }, {
-            view.signUpNotValid()
-        })
+        return model.signUp(email, password)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    onSignedUp(it)
+                }, {
+                    view.signUpNotValid()
+                })
     }
 
     private fun onSignedUp(signUp: MiamzSignUp) {
         UserStorage.storeUser(User(signUp.email, signUp.nickname))
-        //TODO: hide login flow
+        //TODO: hide login flow and show map
     }
 
     private fun areAllFieldFilled(email: String, password: String): Boolean {
