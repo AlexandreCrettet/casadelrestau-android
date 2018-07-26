@@ -1,15 +1,16 @@
 package com.cheerz.casadelrestau.network
 
 import com.cheerz.casadelrestau.network.data.MiamzLogin
-import com.cheerz.casadelrestau.network.data.MiamzPlace
 import com.cheerz.casadelrestau.network.data.MiamzReqLogin
 import com.cheerz.casadelrestau.network.data.MiamzReqPlace
+import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
 import com.cheerz.casadelrestau.network.data.MiamzReqSignUp
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface CasaDelRestauService {
 
@@ -24,8 +25,8 @@ interface CasaDelRestauService {
     fun signUp(@Body params: MiamzReqSignUp): Single<MiamzSignUp>
 
     @POST("places")
-    fun postNewPlace(): Single<MiamzReqPlace>
+    fun postNewPlace(@Body place: MiamzReqPlace): Single<MiamzReqPlaceData>
 
     @GET("places")
-    fun getPlaces(@Body place: MiamzPlace): Single<MiamzReqPlace>
+    fun getPlaces(@Query("lat") lat: Double, @Query("lng") lng: Double, @Query("meter_distance") meter_distance: Int): Single<List<MiamzReqPlaceData>>
 }

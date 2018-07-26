@@ -12,6 +12,11 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import com.cheerz.casadelrestau.login.signUp.SignUp
 import com.cheerz.casadelrestau.login.singIn.SignIn
+import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
+import com.cheerz.casadelrestau.places.PlaceMarkerAssets
+import com.cheerz.casadelrestau.places.Places
+import com.cheerz.casadelrestau.places.PlacesModel
+import com.cheerz.casadelrestau.places.PlacesPresenter
 import com.cheerz.casadelrestau.user.UserStorage
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,21 +27,29 @@ import kotlinx.android.synthetic.main.activity_main.sign_in_view
 import kotlinx.android.synthetic.main.activity_main.sign_up_view
 
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, SignIn.Listener, SignUp.Listener {
+class MainActivity : AppCompatActivity(),
+        OnMapReadyCallback,
+        LocationListener,
+        SignIn.Listener,
+        SignUp.Listener,
+        Places.View {
 
     private lateinit var mMap: GoogleMap
     private val locationRefreshTimeMillis = 500L
     private val locationRefreshDistanceMeters = 100f
     private val czLocation = LatLng(48.88060188, 2.32590994)
     private var mLocationManager: LocationManager? = null
+    private var placesPresenter: Places.Presenter? = null
+    private var lastLocation: LatLng? = null
+    private val distanceSeenMeters = 500 //TODO: it should depend on the zoom
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         UserStorage.initialize(this)
         showMap()
         fetchCurrentLocation()
+        placesPresenter = PlacesPresenter(this, PlacesModel())
         showLogin()
     }
 
@@ -100,8 +113,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, 
 
     override fun onLocationChanged(location: Location?) {
         location?.let {
-            showLocation(LatLng(location.latitude, location.longitude))
-            mLocationManager?.removeUpdates(this)
+            lastLocation = LatLng(location.latitude, location.longitude).apply {
+                showLocation(this)
+                mLocationManager?.removeUpdates(this@MainActivity)
+            }
+            onMapShown()
         }
     }
 
@@ -136,5 +152,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, 
     override fun goToMapView() {
         sign_in_view.hide()
         sign_up_view.hide()
+        onMapShown()
+    }
+
+    private fun onMapShown() {
+        placesPresenter?.onMapShown(lastLocation!!.latitude, lastLocation!!.longitude, distanceSeenMeters)
+    }
+
+    override fun showPlaces(places: List<MiamzReqPlaceData>) {
+        places.map { place ->
+            val toLocation = LatLng(place.lat, place.lng)
+            val assetRes = PlaceMarkerAssets.getAssetRes(place.place_category_tag) ?: return
+            mMap.addMarker(this, toLocation, place.name, assetRes, 100) //TODO size
+        }
     }
 }
