@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Casa Del Restau</string>
     <string name="title_activity_main">Main</string>
+    <string name="sign_up_email_hint">email</string>
+    <string name="sing_up_password_hint">password</string>
+    <string name="sign_up__sign_up_button">sign up</string>
+    <string name="sign_up_sign_in_button">sign in</string>
 </resources>
