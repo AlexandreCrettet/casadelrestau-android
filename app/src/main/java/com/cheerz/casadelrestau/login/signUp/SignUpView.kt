@@ -15,6 +15,11 @@ import kotlinx.android.synthetic.main.login_view.view.sign_up
 
 class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, ConstraintLayout(context, attrs) {
 
+    override fun passwordTooShort() {
+        val text = R.string.password_too_short_toast_message
+        toast(this.context, context.getString(text))
+    }
+
     private val presenter = SignUpPresenter(this, context as SignUp.Listener)
 
     init {
@@ -33,6 +38,6 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, C
 
     override fun signUpNotValid() {
         val text = R.string.sign_up_error_toast_message
-        toast(this.context,   context.getString(text))
+        toast(this.context, context.getString(text))
     }
 }

@@ -24,6 +24,8 @@
         android:layout_marginLeft="@dimen/login_field_margin"
         android:layout_marginRight="@dimen/login_field_margin"
         android:hint="@string/sign_up_email_hint"
+        android:maxLines="1"
+        android:singleLine="true"
         android:padding="@dimen/login_field_padding"
         app:layout_constraintBottom_toBottomOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,14 +34,16 @@
 
     <EditText
         android:id="@+id/password"
-        android:password="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="150dp"
         android:layout_marginLeft="@dimen/login_field_margin"
         android:layout_marginRight="@dimen/login_field_margin"
         android:hint="@string/sing_up_password_hint"
+        android:inputType="textPassword"
+        android:maxLines="1"
         android:padding="@dimen/login_field_padding"
+        android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@id/sign_up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

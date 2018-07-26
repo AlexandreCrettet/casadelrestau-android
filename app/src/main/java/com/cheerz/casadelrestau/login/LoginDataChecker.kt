@@ -2,11 +2,21 @@ package com.cheerz.casadelrestau.login
 
 object LoginDataChecker {
 
-     fun areAllFieldFilled(email: String, password: String): Boolean {
+    fun checkData(email: String, password: String): Boolean {
+        return areAllFieldFilled(email, password) && isEmailValid(email) && isPasswordEnough(password)
+    }
+
+    private fun areAllFieldFilled(email: String, password: String): Boolean {
         return email.isNotEmpty() && password.isNotEmpty()
     }
 
-     fun isEmailValid(email: String): Boolean {
+    private fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
+
+    fun isPasswordEnough(password: String): Boolean {
+        if (password.length < 8)
+            return false
+        return true
     }
 }
