@@ -4,10 +4,8 @@ import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import android.widget.Toast
 import com.cheerz.casadelrestau.R
-import com.cheerz.casadelrestau.login.toast
-import kotlinx.android.synthetic.main.login_view.view.*
+import com.cheerz.casadelrestau.toast
 import kotlinx.android.synthetic.main.login_view.view.email
 import kotlinx.android.synthetic.main.login_view.view.password
 import kotlinx.android.synthetic.main.login_view.view.sign_in
@@ -33,6 +31,6 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, C
 
     override fun signUpNotValid() {
         val text = R.string.sign_up_error_toast_message
-        toast(this.context,   context.getString(text))
+        toast(this.context, context.getString(text))
     }
 }

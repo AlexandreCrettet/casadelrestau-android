@@ -5,7 +5,7 @@ import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
-import com.cheerz.casadelrestau.login.toast
+import com.cheerz.casadelrestau.toast
 import kotlinx.android.synthetic.main.sign_in_view.view.*
 
 class SignInView(context: Context, attrs: AttributeSet? = null) : SignIn.View, ConstraintLayout(context, attrs) {

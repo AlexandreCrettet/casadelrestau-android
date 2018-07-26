@@ -10,8 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import com.cheerz.casadelrestau.login.hide
-import com.cheerz.casadelrestau.login.show
 import com.cheerz.casadelrestau.login.signUp.SignUp
 import com.cheerz.casadelrestau.login.singIn.SignIn
 import com.cheerz.casadelrestau.user.UserStorage
@@ -20,9 +18,9 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_main.sign_in_view
 import kotlinx.android.synthetic.main.activity_main.sign_up_view
+
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, SignIn.Listener, SignUp.Listener {
 
@@ -114,10 +112,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener, 
         val zoom = CameraUpdateFactory.zoomTo(15f)
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
         mMap.animateCamera(zoom)
-    }
-
-    private fun addMarker(toLocation: LatLng, title: String) {
-        mMap.addMarker(MarkerOptions().position(toLocation).title(title))
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
