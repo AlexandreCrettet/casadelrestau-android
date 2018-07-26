@@ -8,6 +8,7 @@ interface SignUp {
 
     interface View {
         fun signUpNotValid()
+        fun passwordTooShort()
     }
 
     interface Presenter {
