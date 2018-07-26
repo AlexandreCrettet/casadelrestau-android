@@ -1,20 +1,26 @@
 package com.cheerz.casadelrestau.login.signUp
 
+import android.content.Context
+import com.cheerz.casadelrestau.login.LoginDataChecker
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
+class SignUpPresenter(private val view: SignUp.View, private val listener : SignUp.Listener  ) : SignUp.Presenter {
 
     private val model = SignUpModel()
     private val disposables = CompositeDisposable()
 
-    override fun onSignInClicked(email: String, password: String) {
-        view.showSignIn()
+    init {
+    }
+
+    override fun onSignInClicked() {
+        listener.onSignInClicked()
     }
 
     override fun onSignUpClicked(email: String, password: String) {
-        if (areAllFieldFilled(email, password) && isEmailValid(email))
+        val loginDataChecker = LoginDataChecker()
+        if (loginDataChecker.areAllFieldFilled(email, password) && loginDataChecker.isEmailValid(email))
             disposables.add(signUp(email, password))
         else
             view.signUpNotValid()
@@ -30,13 +36,5 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
 
     private fun onSignedUp(signUp: MiamzSignUp) {
         TODO()
-    }
-
-    private fun areAllFieldFilled(email: String, password: String): Boolean {
-        return email.isNotEmpty() && password.isNotEmpty()
-    }
-
-    private fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

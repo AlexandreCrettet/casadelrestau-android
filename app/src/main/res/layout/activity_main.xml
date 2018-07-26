@@ -14,7 +14,14 @@
         tools:context=".MainActivity" />
 
     <com.cheerz.casadelrestau.login.signUp.SignUpView
+        android:id="@+id/sign_in_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <com.cheerz.casadelrestau.login.singIn.SignInView
+        android:id="@+id/sign_up_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"/>
 
 </FrameLayout>

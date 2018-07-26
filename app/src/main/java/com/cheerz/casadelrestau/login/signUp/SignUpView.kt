@@ -6,11 +6,12 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.cheerz.casadelrestau.R
+import com.cheerz.casadelrestau.login.toast
 import kotlinx.android.synthetic.main.login_view.view.*
 
-class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, ConstraintLayout(context, attrs) {
+class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, ConstraintLayout(context, attrs) {
 
-    private val presenter = SignUpPresenter(this)
+    private val presenter = SignUpPresenter(this, context as SignUp.Listener)
 
     init {
         RelativeLayout.inflate(context, R.layout.login_view, this)
@@ -28,12 +29,6 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, Co
 
     override fun signUpNotValid() {
         val text = R.string.sign_up_error_toast_message
-        val duration = Toast.LENGTH_SHORT
-        val toast = Toast.makeText(this.context, text, duration)
-        toast.show()
-    }
-
-    override fun showSignIn() {
-        TODO()
+        toast(this.context,   context.getString(text))
     }
 }
