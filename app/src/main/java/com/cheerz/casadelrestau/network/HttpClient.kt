@@ -27,6 +27,7 @@ object HttpClient {
         }
         return OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
+                .addInterceptor(HttpHeadersInterceptor())
                 .build()
     }
 }
