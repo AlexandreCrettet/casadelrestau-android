@@ -1,8 +1,8 @@
-package com.cheerz.casadelrestau.login
+package com.cheerz.casadelrestau.login.signUp
 
-class LoginPresenter(private val view: LoginView) : Login.Presenter {
+class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
 
-    private val model = LoginModel()
+    private val model = SignUpModel()
 
     override fun onSignInCicked() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

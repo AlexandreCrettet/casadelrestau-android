@@ -1,4 +1,4 @@
-package com.cheerz.casadelrestau.login
+package com.cheerz.casadelrestau.login.signUp
 
 interface Login {
 

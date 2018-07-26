@@ -1,4 +1,4 @@
-package com.cheerz.casadelrestau.login
+package com.cheerz.casadelrestau.login.signUp
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
@@ -8,9 +8,9 @@ import android.widget.Toast
 import com.cheerz.casadelrestau.R
 import kotlinx.android.synthetic.main.login_view.view.*
 
-class LoginView(context: Context, attrs: AttributeSet? = null) : Login.View, ConstraintLayout(context, attrs) {
+class SignUpView(context: Context, attrs: AttributeSet? = null) : Login.View, ConstraintLayout(context, attrs) {
 
-    private val presenter = LoginPresenter(this)
+    private val presenter = SignUpPresenter(this)
 
     init {
         RelativeLayout.inflate(context, R.layout.login_view, this)
