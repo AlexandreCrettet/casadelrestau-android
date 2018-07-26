@@ -1,6 +1,5 @@
 package com.cheerz.casadelrestau.login.signUp
 
-import com.cheerz.casadelrestau.network.data.MiamzLogin
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.Single
 
@@ -17,7 +16,6 @@ interface SignUp {
 
     interface Model {
         fun signUp(email: String, password: String): Single<MiamzSignUp>
-        fun login(email: String, password: String): Single<MiamzLogin>
     }
 
     interface Listener {
