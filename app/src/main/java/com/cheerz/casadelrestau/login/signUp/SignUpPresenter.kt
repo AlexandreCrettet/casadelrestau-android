@@ -9,7 +9,7 @@ class SignUpPresenter(private val view: SignUpView) : Login.Presenter {
     private val model = SignUpModel()
     private val disposables = CompositeDisposable()
 
-    override fun onSignInClicked(email: String, password: String) {
+    override fun onSignInClicked() {
         view.showSignIn()
     }
 

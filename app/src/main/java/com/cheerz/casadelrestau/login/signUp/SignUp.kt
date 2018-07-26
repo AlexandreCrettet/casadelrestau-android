@@ -14,7 +14,7 @@ interface Login {
     }
 
     interface Presenter {
-        fun onSignInClicked(email: String, password: String)
+        fun onSignInClicked()
         fun onSignUpClicked(email: String, password: String)
     }
 
