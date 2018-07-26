@@ -141,13 +141,13 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun onSignInClicked() {
-        sign_up_view.show()
-        sign_in_view.hide()
+        sign_up_view.hide()
+        sign_in_view.show()
     }
 
     override fun onSignUpClicked() {
-        sign_up_view.hide()
-        sign_in_view.show()
+        sign_up_view.show()
+        sign_in_view.hide()
     }
 
     override fun goToMapView() {
