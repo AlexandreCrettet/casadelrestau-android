@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity(),
     override fun showPlaces(places: List<MiamzReqPlaceData>) {
         places.map { place ->
             val toLocation = LatLng(place.lat, place.lng)
-            val assetRes = PlaceMarkerAssets.getAssetRes(place.place_category_tag) ?: return
+            val assetRes = PlaceMarkerAssets.find(place.place_category_tag)?.markerAssets ?: return
             mMap.addMarker(this, place.id, toLocation, place.name, assetRes, 75) //TODO size
         }
     }

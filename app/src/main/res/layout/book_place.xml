@@ -49,6 +49,39 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
+    <EditText
+        android:id="@+id/hour"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="right"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@+id/clock"
+        app:layout_constraintTop_toTopOf="@id/clock" />
+
+    <TextView
+        android:id="@+id/separator"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:hint="12"
+        android:text=":"
+        app:layout_constraintLeft_toRightOf="@+id/hour"
+        app:layout_constraintTop_toTopOf="@+id/hour" />
+
+    <EditText
+        android:id="@+id/minutes"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="40dp"
+        android:background="@android:color/white"
+        android:gravity="left"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@id/separator"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/separator" />
+
     <ImageView
         android:id="@+id/burger"
         android:layout_width="50dp"
@@ -74,7 +107,7 @@
         app:layout_constraintTop_toTopOf="@id/burger" />
 
     <TextView
-        android:id="@+id/book_place_button"
+        android:id="@+id/bookButton"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="60dp"
