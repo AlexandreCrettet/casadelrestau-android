@@ -44,12 +44,12 @@
         android:maxLines="1"
         android:singleLine="true"
         android:padding="@dimen/login_field_padding"
-        app:layout_constraintBottom_toTopOf="@id/sign_in"
+        app:layout_constraintBottom_toTopOf="@id/log_in"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/sign_in"
+        android:id="@+id/log_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"

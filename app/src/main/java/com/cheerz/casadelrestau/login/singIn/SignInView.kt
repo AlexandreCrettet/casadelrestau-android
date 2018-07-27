@@ -2,11 +2,14 @@ package com.cheerz.casadelrestau.login.singIn
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
 import com.cheerz.casadelrestau.toast
-import kotlinx.android.synthetic.main.sign_in_view.view.*
+import kotlinx.android.synthetic.main.sign_in_view.view.email
+import kotlinx.android.synthetic.main.sign_in_view.view.password
+import kotlinx.android.synthetic.main.sign_in_view.view.sign_up
 
 class SignInView(context: Context, attrs: AttributeSet? = null) : SignIn.View, ConstraintLayout(context, attrs) {
 
@@ -19,8 +22,9 @@ class SignInView(context: Context, attrs: AttributeSet? = null) : SignIn.View, C
 
     init {
         RelativeLayout.inflate(context, R.layout.sign_in_view, this)
+        setBackgroundColor(ContextCompat.getColor(context, R.color.pink))
         sign_up.setOnClickListener { onSignUpClicked() }
-        sign_in.setOnClickListener { onSignInClicked() }
+        `@+id/log_in`.setOnClickListener { onSignInClicked() }
     }
 
     private fun onSignInClicked() {
