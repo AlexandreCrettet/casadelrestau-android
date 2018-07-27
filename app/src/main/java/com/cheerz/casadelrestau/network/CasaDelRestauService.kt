@@ -1,6 +1,8 @@
 package com.cheerz.casadelrestau.network
 
+import com.cheerz.casadelrestau.network.data.MiamzEvent
 import com.cheerz.casadelrestau.network.data.MiamzLogin
+import com.cheerz.casadelrestau.network.data.MiamzReqEventWrapper
 import com.cheerz.casadelrestau.network.data.MiamzReqLogin
 import com.cheerz.casadelrestau.network.data.MiamzReqPlace
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
@@ -29,4 +31,9 @@ interface CasaDelRestauService {
 
     @GET("places")
     fun getPlaces(@Query("lat") lat: Double, @Query("lng") lng: Double, @Query("meter_distance") meter_distance: Int): Single<List<MiamzReqPlaceData>>
+
+    @POST("events")
+    fun postNewEvent(@Body event: MiamzReqEventWrapper): Single<MiamzEvent>
+
+
 }

@@ -22,7 +22,7 @@ data class MiamzReqPlaceData(
         val place_category_tag: String,
         val user_email: String?,
         val tags: List<String>,
-        val events: List<MiamzEvent>
+        val events: MutableList<MiamzEvent>
 )
 
 data class MiamzReqPlace(val place: MiamzReqPlaceData)
@@ -30,3 +30,6 @@ data class MiamzReqPlace(val place: MiamzReqPlaceData)
 data class MiamzPlace(val lat: Double, val lng: Double, val meter_distance: Int)
 
 data class MiamzEvent(val id: Int, val start_at: String, val stop_at: String, val participants: List<String>)
+
+data class MiamzReqEventWrapper(val event: MiamzReqEvent)
+data class MiamzReqEvent(val place_id: Int, val start_at: String, val stop_at: String)

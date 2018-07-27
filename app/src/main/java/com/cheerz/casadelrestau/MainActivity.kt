@@ -215,6 +215,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showCreateEvent(name: String, id: Int) {
+        create_events.setPlace(id, name)
         create_events.show()
     }
 }

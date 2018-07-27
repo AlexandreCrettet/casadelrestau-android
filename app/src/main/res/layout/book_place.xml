@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/hey_hungreycheerze"
+        android:text="@string/hey_nickname"
         android:textColor="@android:color/white"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -61,7 +61,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/clock" />
 
-    <EditText
+    <TextView
         android:id="@+id/name"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -74,6 +74,7 @@
         app:layout_constraintTop_toTopOf="@id/burger" />
 
     <TextView
+        android:id="@+id/book_place_button"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginBottom="60dp"
