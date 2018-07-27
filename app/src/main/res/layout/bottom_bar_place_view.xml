@@ -1,59 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bottom_bar_background">
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/bottom_bar_arrow"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/swipe_white_2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/bottom_bar_burger_image"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="24dp"
-        android:src="@drawable/pinkburger"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottom_bar_arrow" />
-
-    <TextView
-        android:id="@+id/bottom_bar_name"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottom_bar_top"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintLeft_toRightOf="@id/bottom_bar_burger_image"
-        app:layout_constraintTop_toTopOf="@id/bottom_bar_burger_image"
-        tools:text="Name" />
+        android:background="@color/bottom_bar_background">
 
-    <TextView
-        android:id="@+id/bottom_bar_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:textColor="@android:color/white"
-        app:layout_constraintLeft_toRightOf="@id/bottom_bar_burger_image"
-        app:layout_constraintTop_toBottomOf="@id/bottom_bar_name"
-        tools:text="Adresse, Paris" />
+        <ImageView
+            android:id="@+id/bottom_bar_arrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/swipe_white_2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/bottom_bar_already_booked"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="24dp"
-        android:src="@drawable/alreadybooked"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bottom_bar_arrow" />
+        <ImageView
+            android:id="@+id/bottom_bar_burger_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/pinkburger"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottom_bar_arrow" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/bottom_bar_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toRightOf="@id/bottom_bar_burger_image"
+            app:layout_constraintTop_toTopOf="@id/bottom_bar_burger_image"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/bottom_bar_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:textColor="@android:color/white"
+            app:layout_constraintLeft_toRightOf="@id/bottom_bar_burger_image"
+            app:layout_constraintTop_toBottomOf="@id/bottom_bar_name"
+            tools:text="Adresse, Paris" />
+
+        <ImageView
+            android:id="@+id/bottom_bar_already_booked"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="24dp"
+            android:src="@drawable/alreadybooked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottom_bar_arrow" />
+
+        <TextView
+            android:id="@+id/bottom_bar_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="6dp"
+            android:background="@android:color/white"
+            android:paddingBottom="1dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:paddingTop="1dp"
+            android:textColor="@color/pink"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/bottom_bar_burger_image"
+            app:layout_constraintTop_toBottomOf="@id/bottom_bar_address"
+            tools:text="Italian" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottom_bar_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/pink">
+
+        <TextView
+            android:id="@+id/bottom_bar_create_your_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingBottom="2dp"
+            android:paddingEnd="6dp"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:text="@string/create_your_own_event"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</LinearLayout>

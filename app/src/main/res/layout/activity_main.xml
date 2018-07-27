@@ -32,6 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_marginEnd="16dp"
         android:visibility="invisible" />
 
     <com.cheerz.casadelrestau.sideMenu.SideMenuView
