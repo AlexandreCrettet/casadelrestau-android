@@ -22,7 +22,8 @@ class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.Vie
         RelativeLayout.inflate(context, R.layout.side_menu, this)
         restaurantList.adapter = adapter
         restaurantList.layoutManager = LinearLayoutManager(this.context)
-        left_menu.setOnClickListener { onLeftSideMenuClicked() }
+        right_menu_cross.setOnClickListener { onLeftSideMenuClicked() }
+        right_menu_text.setOnClickListener { onLeftSideMenuClicked() }
     }
 
     override fun onFinishInflate() {
