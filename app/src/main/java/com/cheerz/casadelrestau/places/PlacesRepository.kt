@@ -15,7 +15,8 @@ object PlacesRepository {
     }
 
     fun setPlaces(places: List<MiamzReqPlaceData>) {
-        observable.onNext(places).also { this.places = places }
+        this.places = places
+        pushEvent()
     }
 
     fun getPlaceWithId(markerId: Int): MiamzReqPlaceData? {
@@ -26,5 +27,10 @@ object PlacesRepository {
         places?.find { it.id == placeId }?.apply {
             events.add(event)
         }
+        pushEvent()
+    }
+
+    private fun pushEvent() {
+        observable.onNext(places!!)
     }
 }
