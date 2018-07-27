@@ -12,13 +12,7 @@ import com.cheerz.casadelrestau.places.PlacesRepository
 import com.cheerz.casadelrestau.user.UserStorage
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.book_place.view.bookButton
-import kotlinx.android.synthetic.main.book_place.view.hour
-import kotlinx.android.synthetic.main.book_place.view.hour2
-import kotlinx.android.synthetic.main.book_place.view.minutes
-import kotlinx.android.synthetic.main.book_place.view.minutes2
-import kotlinx.android.synthetic.main.book_place.view.name
-import kotlinx.android.synthetic.main.book_place.view.title
+import kotlinx.android.synthetic.main.book_place.view.*
 
 class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
@@ -29,6 +23,12 @@ class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(
         bookButton.setOnClickListener {
             bookButtonClicked()
         }
+
+        closeButton.setOnClickListener { closeView() }
+    }
+
+    fun closeView() {
+        this.hide()
     }
 
     override fun onVisibilityChanged(changedView: View?, visibility: Int) {
@@ -45,13 +45,13 @@ class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(
     private fun postNewEvent(context: Context, startAt: String, stopAt: String) {
         val event = MiamzReqEventWrapper(MiamzReqEvent(placeId, startAt, stopAt))
         HttpClient.service.postNewEvent(event)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe({
-                    onSuccessCreateEvent(it)
-                }, {
-                    toast(context, "Error")
-                })
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeOn(Schedulers.io())
+            .subscribe({
+                onSuccessCreateEvent(it)
+            }, {
+                toast(context, "Error")
+            })
     }
 
     private fun onSuccessCreateEvent(event: MiamzEvent) {
