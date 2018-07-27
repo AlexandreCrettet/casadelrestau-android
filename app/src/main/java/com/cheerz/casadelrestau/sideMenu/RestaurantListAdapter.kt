@@ -36,7 +36,7 @@ class RestaurantListAdapter(private val context: Context) : RecyclerView.Adapter
 
         holder.itemView.category.text = item.first.tags.firstOrNull()
         holder.itemView.address.text = item.first.name
-        holder.itemView.hours.text = "${item.second.start_at} : ${item.second.end_at}"
+        holder.itemView.hours.text = "${item.second.start_at} : ${item.second.stop_at}"
         holder.itemView.guest.text = participants
         holder.itemView.separator.apply {
             if (position == (itemCount - 1)) hide() else show()

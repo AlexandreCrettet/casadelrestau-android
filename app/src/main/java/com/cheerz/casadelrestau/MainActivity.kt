@@ -60,7 +60,9 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun showLogin() {
-        UserStorage.retrieveToken() ?: sign_up_view.show()
+        UserStorage.retrieveToken()
+                ?.let { goToMapView() }
+                ?: sign_up_view.show()
     }
 
     private fun fetchCurrentLocation() {
