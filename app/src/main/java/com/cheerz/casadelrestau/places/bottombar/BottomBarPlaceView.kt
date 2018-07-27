@@ -6,9 +6,12 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.cheerz.casadelrestau.R
-import com.cheerz.casadelrestau.bookPlaces
+import com.cheerz.casadelrestau.events.Event
+import com.cheerz.casadelrestau.hide
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
+import com.cheerz.casadelrestau.show
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_address
+import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_already_booked
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_arrow
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_create_your_event
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_name
@@ -25,13 +28,20 @@ class BottomBarPlaceView(context: Context, attrs: AttributeSet) : BottomBarPlace
             val yOpened = (parent.height - height).toFloat()
             y = if (y == yOpened) (parent.height - bottom_bar_top.height).toFloat() else yOpened
         }
-        bottom_bar_create_your_event.setOnClickListener { bookPlaces(this.context, attrs) }
+        val listener = context as Event.CreateEventDisplayer
+        bottom_bar_create_your_event.setOnClickListener {
+            listener.showCreateEvent(bottom_bar_name.text.toString(), tag as Int)
+        }
     }
 
     override fun fillFields(place: MiamzReqPlaceData) {
         tag = place.id
         bottom_bar_name.text = place.name
         bottom_bar_address.text = place.address
-        place.place_category_tag?.let { bottom_bar_tag.text = it }  //TODO good tag to get from server
+        place.tags.firstOrNull()?.let { bottom_bar_tag.text = it }
+        if (place.events.isNotEmpty())
+            bottom_bar_already_booked.show()
+        else
+            bottom_bar_already_booked.hide()
     }
 }
