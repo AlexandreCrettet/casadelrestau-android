@@ -23,7 +23,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:layout_marginLeft="@dimen/login_margin"
         android:layout_marginRight="@dimen/login_margin"
         android:background="@android:color/white"
         android:hint="@string/sign_up_email_hint"
@@ -32,21 +31,25 @@
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/email_icon"
         app:layout_constraintTop_toBottomOf="@id/logo" />
 
-    <!--<ImageView-->
-        <!--android:id="@+id/email_icon"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:src="@drawable/"/>-->
+    <ImageView
+        android:id="@+id/email_icon"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_margin"
+        android:src="@drawable/password"
+        app:layout_constraintBottom_toBottomOf="@id/email"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/email" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:layout_marginLeft="@dimen/login_margin"
         android:layout_marginRight="@dimen/login_margin"
         android:background="@android:color/white"
         android:hint="@string/sing_up_password_hint"
@@ -55,8 +58,19 @@
         android:padding="@dimen/login_padding"
         android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/password_icon"
         app:layout_constraintTop_toBottomOf="@id/email" />
+
+    <ImageView
+        android:id="@+id/password_icon"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/login_margin"
+        android:src="@drawable/password"
+        app:layout_constraintBottom_toBottomOf="@id/password"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/password" />
 
     <TextView
         android:id="@+id/sign_up"
