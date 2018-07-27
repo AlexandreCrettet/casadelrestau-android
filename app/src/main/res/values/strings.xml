@@ -13,4 +13,5 @@
     <string name="password_too_short_toast_message">You must have 8 chars in your password</string>
     <string name="login_subtitle">You\'re the food that I want</string>
     <string name="login_subtitle_2" tools:ignore="Typos">(ouh ouh ouh baby)</string>
+    <string name="create_your_own_event">+ Create your own lunch team</string>
 </resources>

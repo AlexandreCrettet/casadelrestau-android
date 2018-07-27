@@ -29,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_main.bottom_bar_place_view
 import kotlinx.android.synthetic.main.activity_main.map
 import kotlinx.android.synthetic.main.activity_main.sign_in_view
 import kotlinx.android.synthetic.main.activity_main.sign_up_view
+import kotlinx.android.synthetic.main.bottom_bar_place_view.bottom_bar_bottom
 
 
 class MainActivity : AppCompatActivity(),
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity(),
         val startY = map.view!!.height.toFloat()
         bottom_bar_place_view
                 .animate()
-                .y(startY - bottom_bar_place_view.height)
+                .y(startY - bottom_bar_bottom.y)
                 .withStartAction {
                     bottom_bar_place_view.y = startY
                     bottom_bar_place_view.show()
