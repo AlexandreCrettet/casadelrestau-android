@@ -27,11 +27,17 @@
         android:background="@android:color/white"
         android:visibility="invisible" />
 
+    <com.cheerz.casadelrestau.places.bottombar.BottomBarPlaceView
+        android:id="@+id/bottom_bar_place_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="invisible" />
 
     <com.cheerz.casadelrestau.sideMenu.SideMenuView
         android:id="@+id/left_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/right_menu"/>
+        android:background="@mipmap/right_menu" />
 
 </FrameLayout>
