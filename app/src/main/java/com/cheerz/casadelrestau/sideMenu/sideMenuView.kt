@@ -20,7 +20,7 @@ class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.Vie
 
     private var isLeftMenuOpen = false
     private var translation = 0F
-    private val adapter = RestaurantListAdapter(context)
+    private val adapter = RestaurantListAdapter()
 
     init {
         inflate(context, R.layout.side_menu, this)
