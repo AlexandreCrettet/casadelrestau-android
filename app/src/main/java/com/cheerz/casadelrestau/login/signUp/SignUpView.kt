@@ -7,9 +7,7 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
 import com.cheerz.casadelrestau.toast
-import kotlinx.android.synthetic.main.login_view.view.email
-import kotlinx.android.synthetic.main.login_view.view.password
-import kotlinx.android.synthetic.main.login_view.view.sign_up
+import kotlinx.android.synthetic.main.login_view.view.*
 
 class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, ConstraintLayout(context, attrs) {
 
@@ -23,7 +21,7 @@ class SignUpView(context: Context, attrs: AttributeSet? = null) : SignUp.View, C
     init {
         RelativeLayout.inflate(context, R.layout.login_view, this)
         setBackgroundColor(ContextCompat.getColor(context, R.color.pink))
-        `@+id/log_in`.setOnClickListener { onSignInClicked() }
+        log_in.setOnClickListener { onSignInClicked() }
         sign_up.setOnClickListener { onSingUpClicked() }
     }
 
