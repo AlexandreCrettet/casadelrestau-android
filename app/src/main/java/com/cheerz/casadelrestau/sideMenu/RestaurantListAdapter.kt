@@ -1,15 +1,25 @@
 package com.cheerz.casadelrestau.sideMenu
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.cheerz.casadelrestau.R
+import com.cheerz.casadelrestau.hide
+import com.cheerz.casadelrestau.network.data.MiamzEvent
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
-import kotlinx.android.synthetic.main.restaurant_details.view.*
+import com.cheerz.casadelrestau.show
+import kotlinx.android.synthetic.main.restaurant_details.view.address
+import kotlinx.android.synthetic.main.restaurant_details.view.category
+import kotlinx.android.synthetic.main.restaurant_details.view.guest
+import kotlinx.android.synthetic.main.restaurant_details.view.hours
+import kotlinx.android.synthetic.main.restaurant_details.view.separator
 
-class RestaurantListAdapter(val placesList: List<MiamzReqPlaceData>, private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class RestaurantListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var placesList: List<Pair<MiamzReqPlaceData, MiamzEvent>> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(context).inflate(R.layout.restaurant_details, parent, false))
@@ -19,16 +29,24 @@ class RestaurantListAdapter(val placesList: List<MiamzReqPlaceData>, private val
         return placesList.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.category.text = placesList[itemCount - 1].place_category_tag
-        holder.itemView.address.text = placesList[itemCount - 1].name
-        holder.itemView.hours.text = placesList[itemCount - 1].reservation_hours
-        val toto =  placesList[itemCount - 1].user_registered.joinToString(", ")
-        holder.itemView.guest.text = toto
-        if (position == (itemCount - 1))
-            holder.itemView.separator.visibility = View.INVISIBLE
+        val item = placesList[position]
+        val participants = item.second.participants.joinToString(", ")
+
+        holder.itemView.category.text = item.first.tags.firstOrNull()
+        holder.itemView.address.text = item.first.name
+        holder.itemView.hours.text = "${item.second.start_at} : ${item.second.end_at}"
+        holder.itemView.guest.text = participants
+        holder.itemView.separator.apply {
+            if (position == (itemCount - 1)) hide() else show()
+        }
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    fun updateItems(items: List<MiamzReqPlaceData>) {
+        placesList = items.flatMap { place -> place.events.map { place to it } }
+        notifyDataSetChanged()
     }
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
