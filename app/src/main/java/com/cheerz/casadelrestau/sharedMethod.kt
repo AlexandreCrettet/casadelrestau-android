@@ -12,6 +12,7 @@ import android.widget.Toast
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 
@@ -29,7 +30,7 @@ fun toast(context: Context, text: String) {
     toast.show()
 }
 
-fun GoogleMap.addMarker(context: Context, toLocation: LatLng, title: String, @DrawableRes markerRes: Int, size: Int) {
+fun GoogleMap.addMarker(context: Context, id: Int, toLocation: LatLng, title: String, @DrawableRes markerRes: Int, size: Int): Marker {
     val bitmap = getBitmapFromVectorDrawable(context, markerRes)
     val scaledBitmap = Bitmap.createScaledBitmap(bitmap, size, size, false)
     val bitmapDescriptor = BitmapDescriptorFactory.fromBitmap(scaledBitmap)
@@ -38,7 +39,8 @@ fun GoogleMap.addMarker(context: Context, toLocation: LatLng, title: String, @Dr
             .title(title)
             .icon(bitmapDescriptor)
             .anchor(0f, 0f)
-    addMarker(marker)
+            .snippet(id.toString())
+    return addMarker(marker)
 }
 
 private fun getBitmapFromVectorDrawable(context: Context, drawableId: Int): Bitmap {

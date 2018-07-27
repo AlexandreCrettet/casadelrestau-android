@@ -17,12 +17,14 @@ import com.cheerz.casadelrestau.places.PlaceMarkerAssets
 import com.cheerz.casadelrestau.places.Places
 import com.cheerz.casadelrestau.places.PlacesModel
 import com.cheerz.casadelrestau.places.PlacesPresenter
+import com.cheerz.casadelrestau.places.PlacesRepository
 import com.cheerz.casadelrestau.user.UserStorage
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.activity_main.sign_in_view
 import kotlinx.android.synthetic.main.activity_main.sign_up_view
 
@@ -112,6 +114,18 @@ class MainActivity : AppCompatActivity(),
         }
         showLocation(czLocation)
         mMap.setOnCameraIdleListener { onMapShown(mMap.cameraPosition.target) }
+        mMap.setOnMarkerClickListener { onMarkerClicked(it) }
+    }
+
+    private fun onMarkerClicked(marker: Marker): Boolean {
+        val markerId = Integer.parseInt(marker.snippet!!)
+        val place = PlacesRepository.getPlaceWithId(markerId) ?: return false
+        showPlace(place)
+        return true
+    }
+
+    private fun showPlace(place: MiamzReqPlaceData) {
+        TODO()
     }
 
     override fun onLocationChanged(location: Location?) {
@@ -169,7 +183,7 @@ class MainActivity : AppCompatActivity(),
         places.map { place ->
             val toLocation = LatLng(place.lat, place.lng)
             val assetRes = PlaceMarkerAssets.getAssetRes(place.place_category_tag) ?: return
-            mMap.addMarker(this, toLocation, place.name, assetRes, 75) //TODO size
+            mMap.addMarker(this, place.id, toLocation, place.name, assetRes, 75) //TODO size
         }
     }
 }
