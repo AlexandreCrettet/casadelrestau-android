@@ -25,7 +25,11 @@ object PlacesRepository {
 
     fun updatePlace(placeId: Int, event: MiamzEvent) {
         places?.find { it.id == placeId }?.apply {
-            events.add(event)
+            events.find {
+                it.id == event.id
+            }?.let {
+                it.participants = event.participants
+            }
         }
         pushEvent()
     }

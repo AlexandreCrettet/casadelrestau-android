@@ -64,7 +64,7 @@ class RestaurantListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
-                        PlacesRepository.updatePlace(item.second.id, it)
+                        PlacesRepository.updatePlace(item.first.id, it)
                     }, {
                         toast(holder.itemView.context, "Error")
                     })
