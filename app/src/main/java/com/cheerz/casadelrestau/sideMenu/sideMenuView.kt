@@ -8,15 +8,20 @@ import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
-import com.cheerz.casadelrestau.sampleRestau
+import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
+import com.cheerz.casadelrestau.places.PlacesRepository
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.view.left_menu
-import kotlinx.android.synthetic.main.side_menu.view.*
+import kotlinx.android.synthetic.main.side_menu.view.restaurantList
+import kotlinx.android.synthetic.main.side_menu.view.right_menu_cross
+import kotlinx.android.synthetic.main.side_menu.view.right_menu_text
 
 class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.View, ConstraintLayout(context, attrs) {
 
     private var isLeftMenuOpen = false
     private var translation = 0F
-    private val adapter = RestaurantListAdapter(sampleRestau.getSample(), context)
+    private val adapter = RestaurantListAdapter(context)
 
     init {
         RelativeLayout.inflate(context, R.layout.side_menu, this)
@@ -24,6 +29,14 @@ class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.Vie
         restaurantList.layoutManager = LinearLayoutManager(this.context)
         right_menu_cross.setOnClickListener { onLeftSideMenuClicked() }
         right_menu_text.setOnClickListener { onLeftSideMenuClicked() }
+        PlacesRepository.getObservable()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({ updateAdapter(it) }, {})
+    }
+
+    private fun updateAdapter(items: List<MiamzReqPlaceData>) {
+        adapter.updateItems(items)
     }
 
     override fun onFinishInflate() {

@@ -14,18 +14,19 @@ data class MiamzReqPlaceData(
         val address: String,
         val lng: Double,
         val lat: Double,
-        val first_image_url: String,
-        val second_image_url: String,
-        val third_image_url: String,
-        val fourth_image_url: String,
-        val fifth_image_url: String,
+        val first_image_url: String?,
+        val second_image_url: String?,
+        val third_image_url: String?,
+        val fourth_image_url: String?,
+        val fifth_image_url: String?,
         val place_category_tag: String,
-        val user_email: String,
-        val reservation_hours: String,
-        val user_registered: List<String>
-
+        val user_email: String?,
+        val tags: List<String>,
+        val events: List<MiamzEvent>
 )
 
 data class MiamzReqPlace(val place: MiamzReqPlaceData)
 
 data class MiamzPlace(val lat: Double, val lng: Double, val meter_distance: Int)
+
+data class MiamzEvent(val id: Int, val start_at: String, val end_at: String, val participants: List<String>)
