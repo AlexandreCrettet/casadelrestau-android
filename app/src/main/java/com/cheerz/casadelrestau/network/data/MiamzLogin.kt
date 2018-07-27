@@ -18,7 +18,10 @@ data class MiamzReqPlaceData(
         val fourth_image_url: String,
         val fifth_image_url: String,
         val place_category_tag: String,
-        val user_email: String
+        val user_email: String,
+        val reservation_hours: String,
+        val user_registered: List<String>
+
 )
 
 data class MiamzReqPlace(val place: MiamzReqPlaceData)
