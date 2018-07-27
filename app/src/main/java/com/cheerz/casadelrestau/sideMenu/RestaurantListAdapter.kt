@@ -10,12 +10,9 @@ import com.cheerz.casadelrestau.R
 import com.cheerz.casadelrestau.hide
 import com.cheerz.casadelrestau.network.data.MiamzEvent
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
+import com.cheerz.casadelrestau.places.PlaceMarkerAssets
 import com.cheerz.casadelrestau.show
-import kotlinx.android.synthetic.main.restaurant_details.view.address
-import kotlinx.android.synthetic.main.restaurant_details.view.category
-import kotlinx.android.synthetic.main.restaurant_details.view.guest
-import kotlinx.android.synthetic.main.restaurant_details.view.hours
-import kotlinx.android.synthetic.main.restaurant_details.view.separator
+import kotlinx.android.synthetic.main.restaurant_details.view.*
 
 class RestaurantListAdapter(private val context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -38,6 +35,9 @@ class RestaurantListAdapter(private val context: Context) : RecyclerView.Adapter
         holder.itemView.address.text = item.first.name
         holder.itemView.hours.text = "${item.second.start_at} : ${item.second.stop_at}"
         holder.itemView.guest.text = participants
+        PlaceMarkerAssets.find(item.first.place_category_tag)?.pinkAssets?.let {
+            holder.itemView.burger.setBackgroundResource(it)
+        }
         holder.itemView.separator.apply {
             if (position == (itemCount - 1)) hide() else show()
         }
