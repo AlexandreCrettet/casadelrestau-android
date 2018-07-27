@@ -1,6 +1,7 @@
 package com.cheerz.casadelrestau.sideMenu
 
 import android.annotation.SuppressLint
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -55,15 +56,24 @@ class RestaurantListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             if (position == (itemCount - 1)) hide() else show()
         }
         holder.itemView.hours.setOnClickListener {
+            val isDeleting: Boolean
             if (isUserParticipating) {
+                isDeleting = true
                 HttpClient.service.deleteEventRegistration(item.second.id)
-
             } else {
+                isDeleting = false
                 HttpClient.service.postEventRegistration(item.second.id)
             }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
+                        if (isDeleting) {
+                            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+                            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+                        } else {
+                            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.pink))
+                            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+                        }
                         PlacesRepository.updatePlace(item.first.id, it)
                     }, {
                         toast(holder.itemView.context, "Error")

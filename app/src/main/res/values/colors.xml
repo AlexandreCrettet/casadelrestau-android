@@ -7,4 +7,7 @@
     <color name="pink">#f9c0c6</color>
     <color name="bottom_bar_background">#6d6f71</color>
     <color name="yellow">#fcf5c3</color>
+
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
 </resources>
