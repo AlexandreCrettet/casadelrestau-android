@@ -4,8 +4,8 @@ import android.support.annotation.DrawableRes
 import com.cheerz.casadelrestau.R
 
 enum class PlaceMarkerAssets(@DrawableRes val asset: Int) {
-    FOOD(R.drawable.ic_launcher_background),
-    DRINKS(R.drawable.ic_launcher_background);
+    FOOD(R.drawable.places_burger_5),
+    DRINKS(R.drawable.places_mk_5);
 
     companion object {
         fun getAssetRes(serverName: String): Int? {

@@ -15,16 +15,15 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-
 fun View.show() {
-    visibility= View.VISIBLE
+    visibility = View.VISIBLE
 }
 
 fun View.hide() {
     visibility = View.GONE
 }
 
-fun toast(context : Context, text : String) {
+fun toast(context: Context, text: String) {
     val duration = Toast.LENGTH_SHORT
     val toast = Toast.makeText(context, text, duration)
     toast.show()
@@ -38,6 +37,7 @@ fun GoogleMap.addMarker(context: Context, toLocation: LatLng, title: String, @Dr
             .position(toLocation)
             .title(title)
             .icon(bitmapDescriptor)
+            .anchor(0f, 0f)
     addMarker(marker)
 }
 

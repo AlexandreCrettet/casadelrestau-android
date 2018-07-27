@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(),
     private var placesPresenter: Places.Presenter? = null
     private var lastLocation: LatLng? = null
     private val distanceSeenMeters = 2000
+    private var isMapLoaded: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        isMapLoaded = true
 
         // Request the permissions to locate the user on the map
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -126,9 +128,11 @@ class MainActivity : AppCompatActivity(),
      * Move the camera on the current location
      */
     private fun showLocation(location: LatLng) {
-        val zoom = CameraUpdateFactory.zoomTo(15f)
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
-        mMap.animateCamera(zoom)
+        if (isMapLoaded) {
+            val zoom = CameraUpdateFactory.zoomTo(18f)
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
+            mMap.animateCamera(zoom)
+        }
     }
 
     override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
@@ -157,7 +161,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     private fun onMapShown(location: LatLng? = null) {
-        val onLocation = location ?: lastLocation!!
+        val onLocation = location ?: lastLocation ?: return
         placesPresenter?.onMapShown(onLocation.latitude, onLocation.longitude, distanceSeenMeters)
     }
 
@@ -165,7 +169,7 @@ class MainActivity : AppCompatActivity(),
         places.map { place ->
             val toLocation = LatLng(place.lat, place.lng)
             val assetRes = PlaceMarkerAssets.getAssetRes(place.place_category_tag) ?: return
-            mMap.addMarker(this, toLocation, place.name, assetRes, 100) //TODO size
+            mMap.addMarker(this, toLocation, place.name, assetRes, 75) //TODO size
         }
     }
 }
