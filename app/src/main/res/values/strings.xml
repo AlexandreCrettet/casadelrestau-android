@@ -17,4 +17,5 @@
     <string name="hey_nickname">Hey %1$s</string>
     <string name="ready_to_book_your_lunch_place">Ready to book your lunch place ?</string>
     <string name="book_this_place">Book this place</string>
+    <string name="global_to">to</string>
 </resources>
