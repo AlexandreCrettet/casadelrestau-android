@@ -55,6 +55,13 @@ class RestaurantListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.itemView.separator.apply {
             if (position == (itemCount - 1)) hide() else show()
         }
+        if (!isUserParticipating) {
+            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.pink))
+            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+        } else {
+            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+        }
         holder.itemView.hours.setOnClickListener {
             val isDeleting: Boolean
             if (isUserParticipating) {
@@ -68,11 +75,11 @@ class RestaurantListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
                         if (isDeleting) {
-                            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
-                            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-                        } else {
                             holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.pink))
                             holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+                        } else {
+                            holder.itemView.hours.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.black))
+                            holder.itemView.hours.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
                         }
                         PlacesRepository.updatePlace(item.first.id, it)
                     }, {
