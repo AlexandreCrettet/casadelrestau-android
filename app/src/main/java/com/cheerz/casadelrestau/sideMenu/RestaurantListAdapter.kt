@@ -20,10 +20,15 @@ class RestaurantListAdapter(val placesList: List<MiamzReqPlaceData>, private val
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        holder.itemView.name.text = placesList[itemCount - 1].name
+        holder.itemView.category.text = placesList[itemCount - 1].place_category_tag
+        holder.itemView.address.text = placesList[itemCount - 1].name
+        holder.itemView.hours.text = placesList[itemCount - 1].reservation_hours
+        val toto =  placesList[itemCount - 1].user_registered.joinToString(", ")
+        holder.itemView.guest.text = toto
+        if (position == (itemCount - 1))
+            holder.itemView.separator.visibility = View.INVISIBLE
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val text = view.name
     }
 }

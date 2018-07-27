@@ -21,11 +21,15 @@
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/right_menu_croix"
         />
+
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="60dp"
         android:id="@+id/restaurantList"
         android:layout_width="match_parent"
         android:clickable="false"
-        android:layout_marginLeft="40dp"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="100dp"
         android:layout_height="match_parent"/>
 
 </merge>
