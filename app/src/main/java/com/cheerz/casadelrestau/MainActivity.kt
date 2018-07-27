@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import com.cheerz.casadelrestau.login.signUp.SignUp
 import com.cheerz.casadelrestau.login.singIn.SignIn
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
@@ -25,19 +26,16 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.activity_main.bottom_bar_place_view
-import kotlinx.android.synthetic.main.activity_main.map
-import kotlinx.android.synthetic.main.activity_main.sign_in_view
-import kotlinx.android.synthetic.main.activity_main.sign_up_view
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.bottom_bar_place_view.bottom_bar_bottom
 
 
 class MainActivity : AppCompatActivity(),
-        OnMapReadyCallback,
-        LocationListener,
-        SignIn.Listener,
-        SignUp.Listener,
-        Places.View {
+    OnMapReadyCallback,
+    LocationListener,
+    SignIn.Listener,
+    SignUp.Listener,
+    Places.View {
 
     private lateinit var mMap: GoogleMap
     private val locationRefreshTimeMillis = 500L
@@ -80,10 +78,10 @@ class MainActivity : AppCompatActivity(),
     private fun requestLocationUpdates() {
         mLocationManager = mLocationManager ?: getSystemService(LOCATION_SERVICE) as LocationManager
         mLocationManager!!.requestLocationUpdates(
-                LocationManager.GPS_PROVIDER,
-                locationRefreshTimeMillis,
-                locationRefreshDistanceMeters,
-                this
+            LocationManager.GPS_PROVIDER,
+            locationRefreshTimeMillis,
+            locationRefreshDistanceMeters,
+            this
         )
     }
 
@@ -137,13 +135,13 @@ class MainActivity : AppCompatActivity(),
     private fun showPlace() {
         val startY = map.view!!.height.toFloat()
         bottom_bar_place_view
-                .animate()
-                .y(startY - bottom_bar_bottom.y)
-                .withStartAction {
-                    bottom_bar_place_view.y = startY
-                    bottom_bar_place_view.show()
-                }
-                .start()
+            .animate()
+            .y(startY - bottom_bar_bottom.y)
+            .withStartAction {
+                bottom_bar_place_view.y = startY
+                bottom_bar_place_view.show()
+            }
+            .start()
     }
 
     override fun onLocationChanged(location: Location?) {
@@ -186,9 +184,14 @@ class MainActivity : AppCompatActivity(),
         sign_in_view.hide()
     }
 
+    private fun showMenu() {
+        left_menu.show()
+    }
+
     override fun goToMapView() {
         sign_in_view.hide()
         sign_up_view.hide()
+        showMenu()
         onMapShown()
     }
 
