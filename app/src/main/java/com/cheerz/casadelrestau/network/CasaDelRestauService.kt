@@ -10,8 +10,10 @@ import com.cheerz.casadelrestau.network.data.MiamzReqSignUp
 import com.cheerz.casadelrestau.network.data.MiamzSignUp
 import io.reactivex.Single
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface CasaDelRestauService {
@@ -35,5 +37,9 @@ interface CasaDelRestauService {
     @POST("events")
     fun postNewEvent(@Body event: MiamzReqEventWrapper): Single<MiamzEvent>
 
+    @POST("events/{event_id}/event_registration")
+    fun postEventRegistration(@Path("event_id") eventId: Int): Single<MiamzEvent>
 
+    @DELETE("events/{event_id}/event_registration")
+    fun deleteEventRegistration(@Path("event_id") eventId: Int): Single<MiamzEvent>
 }

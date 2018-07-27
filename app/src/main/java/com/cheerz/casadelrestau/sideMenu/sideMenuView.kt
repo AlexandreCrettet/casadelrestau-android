@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
-import android.widget.RelativeLayout
 import com.cheerz.casadelrestau.R
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
 import com.cheerz.casadelrestau.places.PlacesRepository
@@ -24,7 +23,7 @@ class SideMenuView(context: Context, attrs: AttributeSet? = null) : SideMenu.Vie
     private val adapter = RestaurantListAdapter(context)
 
     init {
-        RelativeLayout.inflate(context, R.layout.side_menu, this)
+        inflate(context, R.layout.side_menu, this)
         restaurantList.adapter = adapter
         restaurantList.layoutManager = LinearLayoutManager(this.context)
         right_menu_cross.setOnClickListener { onLeftSideMenuClicked() }
