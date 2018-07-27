@@ -12,11 +12,7 @@ import com.cheerz.casadelrestau.places.PlacesRepository
 import com.cheerz.casadelrestau.user.UserStorage
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.book_place.view.bookButton
-import kotlinx.android.synthetic.main.book_place.view.hour
-import kotlinx.android.synthetic.main.book_place.view.minutes
-import kotlinx.android.synthetic.main.book_place.view.name
-import kotlinx.android.synthetic.main.book_place.view.title
+import kotlinx.android.synthetic.main.book_place.view.*
 
 class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs) {
 
@@ -67,7 +63,10 @@ class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(
     private fun bookButtonClicked() {
         val hour = hour.text.toString()
         val minutes = minutes.text.toString()
-        if (hour.toInt() in 24 downTo -1 && minutes.toInt() in 60 downTo -1)
+        val hour2 = hour2.text.toString()
+        val minutes2 = minutes2.text.toString()
+
+        if (hour.toInt() in 24 downTo -1 && minutes.toInt() in 60 downTo -1 && hour2.toInt() in 24 downTo -1 && minutes2.toInt() in 60 downTo -1)
             postNewEvent(context)
         else
             toast(this.context, "Use proper value for your reservation")

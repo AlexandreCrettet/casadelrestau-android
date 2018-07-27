@@ -54,7 +54,7 @@
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:background="@android:color/white"
-        android:gravity="right"
+        android:gravity="center"
         android:inputType="number"
         app:layout_constraintLeft_toRightOf="@+id/clock"
         app:layout_constraintTop_toTopOf="@id/clock" />
@@ -76,11 +76,54 @@
         android:layout_height="50dp"
         android:layout_marginRight="40dp"
         android:background="@android:color/white"
-        android:gravity="left"
+        android:gravity="center_vertical"
         android:inputType="number"
         app:layout_constraintLeft_toRightOf="@id/separator"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/separator" />
+
+    <TextView
+        android:id="@+id/to"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:text="to"
+        android:gravity="center"
+        app:layout_constraintLeft_toRightOf="@+id/minutes"
+        app:layout_constraintTop_toTopOf="@id/minutes" />
+
+
+    <EditText
+        android:id="@+id/hour2"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@+id/to"
+        app:layout_constraintTop_toTopOf="@id/to" />
+
+    <TextView
+        android:id="@+id/separator2"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:hint="12"
+        android:text=":"
+        app:layout_constraintLeft_toRightOf="@+id/hour2"
+        app:layout_constraintTop_toTopOf="@+id/hour2" />
+
+    <EditText
+        android:id="@+id/minutes2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginRight="40dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:inputType="number"
+        app:layout_constraintLeft_toRightOf="@id/separator2"
+        app:layout_constraintTop_toTopOf="@+id/separator2" />
+
 
     <ImageView
         android:id="@+id/burger"
@@ -100,6 +143,7 @@
         android:layout_height="50dp"
         android:layout_marginRight="40dp"
         android:background="@android:color/white"
+        android:gravity="center"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         app:layout_constraintLeft_toRightOf="@id/burger"
