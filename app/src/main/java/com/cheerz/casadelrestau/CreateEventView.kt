@@ -3,6 +3,7 @@ package com.cheerz.casadelrestau
 import android.content.Context
 import android.support.constraint.ConstraintLayout
 import android.util.AttributeSet
+import android.view.View
 import com.cheerz.casadelrestau.network.HttpClient
 import com.cheerz.casadelrestau.network.data.MiamzEvent
 import com.cheerz.casadelrestau.network.data.MiamzReqEvent
@@ -23,11 +24,20 @@ class CreateEventView(context: Context, attrs: AttributeSet) : ConstraintLayout(
 
     init {
         inflate(context, R.layout.book_place, this)
-        val username = UserStorage.retrieveUser()!!.username
-        title.text = context.getString(R.string.hey_nickname, username)
         bookButton.setOnClickListener {
             bookButtonClicked()
         }
+    }
+
+    override fun onVisibilityChanged(changedView: View?, visibility: Int) {
+        if (visibility == View.VISIBLE) {
+            showTitle(context)
+        }
+    }
+
+    private fun showTitle(context: Context) {
+        val username = UserStorage.retrieveUser()!!.username
+        title.text = context.getString(R.string.hey_nickname, username)
     }
 
     private fun postNewEvent(context: Context) {
