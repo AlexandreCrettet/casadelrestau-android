@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import com.cheerz.casadelrestau.R
+import com.cheerz.casadelrestau.bookPlaces
 import com.cheerz.casadelrestau.network.data.MiamzReqPlaceData
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_address
 import kotlinx.android.synthetic.main.bottom_bar_place_view.view.bottom_bar_arrow
@@ -24,7 +25,7 @@ class BottomBarPlaceView(context: Context, attrs: AttributeSet) : BottomBarPlace
             val yOpened = (parent.height - height).toFloat()
             y = if (y == yOpened) (parent.height - bottom_bar_top.height).toFloat() else yOpened
         }
-        bottom_bar_create_your_event.setOnClickListener { /*TODO: add show BookView*/ }
+        bottom_bar_create_your_event.setOnClickListener { bookPlaces(this.context, attrs) }
     }
 
     override fun fillFields(place: MiamzReqPlaceData) {
