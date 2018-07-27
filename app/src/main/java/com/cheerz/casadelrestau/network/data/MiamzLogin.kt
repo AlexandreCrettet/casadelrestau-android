@@ -11,6 +11,7 @@ data class MiamzReqSignUpUser(val email: String, val password: String)
 data class MiamzReqPlaceData(
         val id: Int,
         val name: String,
+        val address: String,
         val lng: Double,
         val lat: Double,
         val first_image_url: String,

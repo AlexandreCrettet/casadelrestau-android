@@ -25,6 +25,8 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import kotlinx.android.synthetic.main.activity_main.bottom_bar_place_view
+import kotlinx.android.synthetic.main.activity_main.map
 import kotlinx.android.synthetic.main.activity_main.sign_in_view
 import kotlinx.android.synthetic.main.activity_main.sign_up_view
 
@@ -120,12 +122,25 @@ class MainActivity : AppCompatActivity(),
     private fun onMarkerClicked(marker: Marker): Boolean {
         val markerId = Integer.parseInt(marker.snippet!!)
         val place = PlacesRepository.getPlaceWithId(markerId) ?: return false
-        showPlace(place)
+        fillPlace(place)
+        showPlace()
         return true
     }
 
-    private fun showPlace(place: MiamzReqPlaceData) {
-        TODO()
+    private fun fillPlace(place: MiamzReqPlaceData) {
+        bottom_bar_place_view.fillFields(place)
+    }
+
+    private fun showPlace() {
+        val startY = map.view!!.height.toFloat()
+        bottom_bar_place_view
+                .animate()
+                .y(startY - bottom_bar_place_view.height)
+                .withStartAction {
+                    bottom_bar_place_view.y = startY
+                    bottom_bar_place_view.show()
+                }
+                .start()
     }
 
     override fun onLocationChanged(location: Location?) {
