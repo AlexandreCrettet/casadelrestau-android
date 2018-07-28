@@ -206,8 +206,11 @@ class MainActivity : AppCompatActivity(),
         placesPresenter?.onMapShown(onLocation.latitude, onLocation.longitude, distanceSeenMeters)
     }
 
+    private var markers: List<Marker> = emptyList()
+
     override fun showPlaces(places: List<MiamzReqPlaceData>) {
-        places.map { place ->
+        markers.forEach { it.remove() }
+        markers = places.map { place ->
             val toLocation = LatLng(place.lat, place.lng)
             val assetRes = PlaceMarkerAssets.find(place.place_category_tag)?.markerAssets ?: return
             mMap.addMarker(this, place.id, toLocation, place.name, assetRes, 75) //TODO size
